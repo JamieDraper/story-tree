@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>StoryTree</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="main.css?v=1.0">
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@next/dist/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+	<script src="https://unpkg.com/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+</head>
+<script>
+/***
+TODO:
+Make components for:
+  #level
+  but still need level to be a for loop over levelsCount
+***/
+</script>
+<body>
+
+<div id="app" class="container-fluid">
+
+  <div v-for="n in levelCount" id="level" class="main__choicelist row">
+  	<!-- MAIN TEXT HERE -->
+    <div v-for="(choice, index) in choices" class="main__choiceitem col-xs-12 col-sm-4">
+
+      <button v-on:click="clickChoiceButton(index)" v-b-modal.modal1 class="btn btn-choice">
+      	{{ choice.choiceButtonText }}
+      </btn>
+
+    </div>
+
+    <!-- Modal Component -->
+    <b-modal @ok="selectChoice" :title="openChoice.choiceButtonText" id="modal1" >
+
+      <p class="my-4">
+      	{{openChoice.modalBody}}
+      </p>
+
+    </b-modal>
+
+  </div>
+
+</div>
+
+ <script src="storytree.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
